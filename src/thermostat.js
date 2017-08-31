@@ -1,8 +1,9 @@
 
 function Thermostat () {
 };
+var DEFAULT_TEMP = 20
 
-Thermostat.prototype.temp = 20
+Thermostat.prototype.temp = DEFAULT_TEMP
 Thermostat.prototype.powerSaving = true
 
 Thermostat.prototype.up = function() {
@@ -27,3 +28,19 @@ Thermostat.prototype.powerSavingButton = function() {
     this.powerSaving = true
   }
 }
+
+Thermostat.prototype.reset = function() {
+  this.temp = DEFAULT_TEMP
+}
+
+Thermostat.prototype.usage = function() {
+  if(this.temp < 18) {
+    return "low-usage"
+  }
+  else if (this.temp > 18 && this.temp < 25) {
+    return "medium-usage"
+  }
+  else {
+    return "high-usage"
+  }
+};
